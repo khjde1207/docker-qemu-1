@@ -14,6 +14,13 @@ $ docker run -it --rm \
 	-e QEMU_CDROM=/tmp/debian.iso \
 	-e QEMU_BOOT='order=d' \
 	-e QEMU_PORTS='2375 2376' \
+    -e QEMU_NO_VNC=0
+    -e REMOTE_ACCESS=spice
+    -e SPICE_PASSWORD=1234
+    -e SPICE_ADDRESS=0.0.0.0
+    -e SPICE_PORT=5900
+    -e QEMU_NO_SPICE=1
+    -e WEB_SPICE_PORT=5959
 	tianon/qemu:native
 ```
 
