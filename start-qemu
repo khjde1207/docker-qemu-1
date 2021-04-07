@@ -103,6 +103,14 @@ if [ -z "${QEMU_NO_VNC:-}" ]; then
 	)
 fi
 
+if [ -z "${QEMU_NO_SPICE:-}" ]; then
+	qemuArgs+=(
+		-spice "port=$SPICE_PORT,password=$SPICE_PASSWORD,addr=$SPICE_ADDRESS"
+	)
+fi
+
+qemuArgs+=(-usbdevice "tablet")
+
 qemuArgs+=( "$@" )
 
 set -x
