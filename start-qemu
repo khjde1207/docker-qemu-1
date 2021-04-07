@@ -103,15 +103,21 @@ if [ -z "${QEMU_NO_VNC:-}" ]; then
 	)
 fi
 
-if [ -z "${QEMU_NO_SPICE:-}" ]; then
+# echo ">>>> ${QEMU_NO_SPICE:-}"
+if [ "${QEMU_NO_SPICE:-}" ]; then
+	# echo ">>>>"
+	# echo "port=$SPICE_PORT,password=$SPICE_PASSWORD,addr=$SPICE_ADDRESS"
 	qemuArgs+=(
 		-spice "port=$SPICE_PORT,password=$SPICE_PASSWORD,addr=$SPICE_ADDRESS"
 	)
 fi
 
-qemuArgs+=(-usbdevice "tablet")
+qemuArgs+=(-device qemu-xhci,id=xhci -device usb-tablet,bus=xhci.0)
 
 qemuArgs+=( "$@" )
+# echo $QEMU_NO_SPICE
+
+websockify -D  ${WEB_SPICE_PORT} localhost:${SPICE_PORT}
 
 set -x
 exec "$qemu" "${qemuArgs[@]}"

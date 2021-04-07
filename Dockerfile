@@ -32,6 +32,7 @@ COPY *.patch /qemu-patches/
 
 ENV REMOTE_ACCESS=spice
 ENV QEMU_NO_SPICE=0
+ENV QEMU_NO_SPICE_WEB=0
 ENV SPICE_PASSWORD=1234
 ENV SPICE_ADDRESS=0.0.0.0
 ENV SPICE_PORT=5900
@@ -90,7 +91,9 @@ RUN set -eux; \
 		zlib1g-dev \
 # https://wiki.qemu.org/ChangeLog/5.2#Build_Information
 		ninja-build \
-		python3-setuptools \
+		python3-setuptools \ 
+		libspice-protocol-dev \
+		libspice-server-dev \
 	; \
 	rm -rf /var/lib/apt/lists/*; \
 	\
@@ -160,6 +163,7 @@ RUN set -eux; \
 		--enable-vnc \
 		--enable-vnc-jpeg \
 		--enable-vnc-png \
+		--enable-spice \
 		--enable-xen \
 		--enable-xfsctl \
 # rbd support is enabled, but "librbd1" is not included since it adds ~60MB and is version-sensitive (https://github.com/tianon/docker-qemu/pull/11#issuecomment-689816553)
@@ -189,7 +193,12 @@ RUN set -eux; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	\
 # basic smoke test
-	qemu-img --version
+	qemu-img --version 
+
+RUN apt-get update && apt-get install -y python3 python3-setuptools\ 
+		python-numpy \
+		git ; \
+	git clone https://github.com/novnc/websockify /websockify && ls && cd /websockify && python3 setup.py install
 
 STOPSIGNAL SIGHUP
 
