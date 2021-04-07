@@ -28,6 +28,16 @@ Note: port 22 will always be mapped (regardless of the contents of `QEMU_PORTS`)
 
 For supplying additional arguments, use a command of `start-qemu <args>`. For example, to use `-curses`, one would `docker run ... tianon/qemu start-qemu -curses`.
 
+install windows :
+
+1. wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+2. docker run   ...... tianon/qemu start-qemu -drive file=/tmp/virtio-win-0.1.185.iso
+3. https://linuxhint.com/install_virtio_drivers_kvm_qemu_windows_vm/ 
+
+https://www.google.com/search?q=qemu+virtio+windows&client=firefox-b-d&ei=imptYIWZN_XJmAXB9qoQ&oq=qemu+virtio+windows&gs_lcp=Cgdnd3Mtd2l6EAwyBwgAELADEBMyCQgAELADEB4QEzIJCAAQsAMQHhATMgkIABCwAxAeEBMyCwgAELADEAgQHhATMgsIABCwAxAIEB4QEzILCAAQsAMQCBAeEBMyCwgAELADEAgQHhATMgsIABCwAxAIEB4QE1AAWABgx5ADaAFwAHgAgAGEAYgBhAGSAQMwLjGYAQCqAQdnd3Mtd2l6yAEJwAEB&sclient=gws-wiz&ved=0ahUKEwiFhtj32OvvAhX1JKYKHUG7CgIQ4dUDCAw
+
+
+
 For UEFI support, [the `ovmf` package](https://packages.debian.org/sid/ovmf) is installed, which can be utilized most easily by supplying `--bios /usr/share/ovmf/OVMF.fd`.
 
 By default, this image will use [QEMU's user-mode networking stack](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29), which means if you want ping/ICMP working, you'll likely need to also include something like `--sysctl net.ipv4.ping_group_range='0 2147483647'` in your container runtime settings.
