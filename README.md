@@ -31,7 +31,7 @@ For supplying additional arguments, use a command of `start-qemu <args>`. For ex
 install windows :
 
 1. wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
-2. docker run   ...... tianon/qemu `start-qemu -drive file=/tmp/virtio-win-0.1.185.iso`
+2. docker run   ...... tianon/qemu `start-qemu -drive file=/tmp/virtio-win-0.1.185.iso,index=1,media=cdrom`
 3. https://linuxhint.com/install_virtio_drivers_kvm_qemu_windows_vm/ 
 
 https://www.google.com/search?q=qemu+virtio+windows&
