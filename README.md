@@ -34,7 +34,7 @@ install windows :
 2. docker run   ...... tianon/qemu `start-qemu -drive file=/tmp/virtio-win-0.1.185.iso`
 3. https://linuxhint.com/install_virtio_drivers_kvm_qemu_windows_vm/ 
 
-https://www.google.com/search?q=qemu+virtio+windows&client=firefox-b-d&ei=imptYIWZN_XJmAXB9qoQ&oq=qemu+virtio+windows&gs_lcp=Cgdnd3Mtd2l6EAwyBwgAELADEBMyCQgAELADEB4QEzIJCAAQsAMQHhATMgkIABCwAxAeEBMyCwgAELADEAgQHhATMgsIABCwAxAIEB4QEzILCAAQsAMQCBAeEBMyCwgAELADEAgQHhATMgsIABCwAxAIEB4QE1AAWABgx5ADaAFwAHgAgAGEAYgBhAGSAQMwLjGYAQCqAQdnd3Mtd2l6yAEJwAEB&sclient=gws-wiz&ved=0ahUKEwiFhtj32OvvAhX1JKYKHUG7CgIQ4dUDCAw
+https://www.google.com/search?q=qemu+virtio+windows&
 
 
 
